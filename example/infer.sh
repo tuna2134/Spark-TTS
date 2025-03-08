@@ -42,6 +42,6 @@ python -m cli.inference \
     --save_dir "${save_dir}" \
     --model_dir "${model_dir}" \
     --prompt_text "${prompt_text}" \
-    --prompt_speech_path "${prompt_speech_path}"
-    
+    --prompt_speech_path "${prompt_speech_path}" \
+    --cpu
     

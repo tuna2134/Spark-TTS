@@ -57,6 +57,11 @@ def parse_args():
     parser.add_argument(
         "--speed", choices=["very_low", "low", "moderate", "high", "very_high"]
     )
+    parser.add_argument(
+        "--cpu",
+        action="store_true",
+        help="Flag to run inference on CPU instead of GPU",
+    )
     return parser.parse_args()
 
 
@@ -69,7 +74,7 @@ def run_tts(args):
     os.makedirs(args.save_dir, exist_ok=True)
 
     # Convert device argument to torch.device
-    device = torch.device(f"cuda:{args.device}")
+    device = torch.device(f"cuda:{args.device}") if not args.cpu else torch.device("cpu")
 
     # Initialize the model
     model = SparkTTS(args.model_dir, device)

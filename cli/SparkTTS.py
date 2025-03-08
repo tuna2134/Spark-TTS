@@ -24,12 +24,15 @@ from sparktts.models.audio_tokenizer import BiCodecTokenizer
 from sparktts.utils.token_parser import LEVELS_MAP, GENDER_MAP, TASK_TOKEN_MAP
 
 
+device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+
+
 class SparkTTS:
     """
     Spark-TTS for text-to-speech generation.
     """
 
-    def __init__(self, model_dir: Path, device: torch.device = torch.device("cuda:0")):
+    def __init__(self, model_dir: Path, device: torch.device = device):
         """
         Initializes the SparkTTS model with the provided configurations and device.
 
